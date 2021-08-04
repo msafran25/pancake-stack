@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
+    <title>pancake Stack</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+          <div class="overlay has-fade"></div>
+          <nav class="wrapper wrapper-plr flex flex-jc-sb flex-ai-c">
+            <a href="#" class="header__logo">
+              <img src=img/logo_pancakes.png alt="Pancake Stack Logo" />
+            </a>
+    
+            <button href="#" class="header__btnHamburger hide-for-desktop">
+              <span></span><span></span><span></span>
+            </button>
+    
+            <div class="header__links hide-for-mobile">
+              <a href="#menu">MENU</a><a href="#contact">CONTACT</a><a href="#about">ABOUT</a>
+            </div>
+    
+            <div class="header__sm hide-for-mobile">
+              <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-tripadvisor"></i></a>
+            </div>
+          </nav>
+          <div class="header__menu has-fade">
+            <a href="#menu">MENU</a><a href="#contact">CONTACT</a><a href="#about">ABOUT</a>
+            <div>
+              <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-tripadvisor"></i></a>
+            </div>
+          </div>
+        </header>
+        <main class="main">
+          <section class="hero">
+            <div class="slider">
+              <div class="slider__item">
+                <img src="img/hero_pancake.jpg" alt="Pancakes" class="slider__img" />
+              </div>
+              <div class="slider__item">
+                <img src="img/hero_pancake2.jpg" alt="Pancakes" class="slider__img" />
+              </div>
+              <div class="slider__item">
+                <img src="img/hero_pancake3.jpg" alt="Pancakes" class="slider__img" />
+              </div>
+              <button class="slider__nextBtn">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <button class="slider__prevBtn" disabled>
+                <i class="fas fa-chevron-left"></i>
+              </button>
+            </div>
+            <h1 class="hero__title">BEST PANCAKES</h1>
+            <a href="#delivery"><button class="hero__btn button">ORDER ONLINE</button></a>
+    
+            <div class="hero__scroll-icon">
+              <a href="#about" class="">
+                <div></div>
+                <div></div>
+              </a>
+            </div>
+          </section>
+          <section id="about" class="about">
+            <div class="about__content wrapper wrapper-pall flex flex-jc-c flex-ai-c">
+              <h2 class="about__title">ABOUT US</h2>
+              <p class="about__text wrapper-text">
+                We are a family run pancake house. Mauris dictum euismod pretium.
+                Sed tempor ultrices dolor commodo interdum. Vivamus metus eros,
+                mollis non odio commodo, suscipit faucibus nulla. Sed porta, magna
+                vel interdum convallis, lorem augue feugiat metus, eu pretium
+                nulla velit et lectus. Nunc sed euismod urna, quis imperdiet odio.
+                Vestibulum sed velit ac urna hendrerit aliquet. Nam pellentesque
+                ipsum ligula, vel iaculis nisl finibus quis.
+              </p>
+            </div>
+          </section>
+          <section id="menu" class="menu wrapper-ptb">
+            <header class="menu__header wrapper-plr wrapper-text">
+              <h2>MENU</h2>
+              <p>
+                Want something sweet? Or maybe you prefer a savory dinner? Here
+                you can find something for every whim. Nam pellentesque ipsum
+                ligula, vel iaculis nisl finibus quis.
+              </p>
+            </header>
+            <div class="menu__content wrapper-plr flex flex-jc-c flex-ai-c">
+              <div class="card">
+                <img class="card__img" src="img/menu_1.jpg" alt="Sweet Pancakes" />
+                <h3 class="card__category">SWEET</h3>
+                <ul class="card__list">
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4>CLASSIC</h4>
+                      <span>15</span>
+                    </header>
+                    <p class="">butter, maple syrup</p>
+                  </li>
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4 class="">Strawberry & Chocolate</h4>
+                      <span>17</span>
+                    </header>
+                    <p class="card__description">
+                      strawberry, chocolate chips, maple syrup
+                    </p>
+                  </li>
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4 class="">Banana & Peanuts</h4>
+                      <span>20</span>
+                    </header>
+                    <p class="card__description">
+                      carmelized bananas, peanut butter, caramel
+                    </p>
+                  </li>
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4 class="">Nutella</h4>
+                      <span>22</span>
+                    </header>
+                    <p class="card__description">
+                      Nutella, stawberry, blueberry, whipped cream
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <div class="card">
+                <img class="card__img" src="img/menu_2.png" alt="Savory Pancakes" />
+                <h3 class="card__category">SAVORY</h3>
+                <ul class="card__list">
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4 class="card__title">Tex-Mex</h4>
+                      <span>22</span>
+                    </header>
+                    <p class="card__description">
+                      minced beef, red bean, corn, pepper, hot sauce
+                    </p>
+                  </li>
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4 class="card__title">Egg & Bacon</h4>
+                      <span>20</span>
+                    </header>
+                    <p class="card__description">fried egg, bacon, maple syrup</p>
+                  </li>
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4 class="card__title">Chili con carne</h4>
+                      <span>25</span>
+                    </header>
+                    <p class="card__description">
+                      minced beef, onion, pepper, chili
+                    </p>
+                  </li>
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4 class="card__title">Tomato Chicken</h4>
+                      <span>22</span>
+                    </header>
+                    <p class="card__description">
+                      chicken, tomato sauce, spinach, mozzarella
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <div class="card">
+                <img class="card__img" src="img/menu_3.jpg" alt="Beverages" />
+                <h3 class="card__category">BEVERAGES</h3>
+                <ul class="card__list">
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4 class="card__title">Lemonade</h4>
+                      <span>9</span>
+                    </header>
+                    <p class="card__description">
+                      strawberry / lemon & mint / mango
+                    </p>
+                  </li>
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4 class="card__title">Tea</h4>
+                      <span>10</span>
+                    </header>
+                    <p class="card__description">
+                      earl grey, green, raspberry, mango
+                    </p>
+                  </li>
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4 class="card__title">Cappuccino</h4>
+                      <span>12</span>
+                    </header>
+                    <p class="card__description"></p>
+                  </li>
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4 class="card__title">Flat White</h4>
+                      <span>11</span>
+                    </header>
+                    <p class="card__description"></p>
+                  </li>
+                  <li class="card__item">
+                    <header class="card__header">
+                      <h4 class="card__title">Espresso</h4>
+                      <span>8</span>
+                    </header>
+                    <p class="card__description"></p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section id="contact" class="locations wrapper-ptb">
+            <h2 class="locations__title">LOCATIONS</h2>
+            <div class="locations__content flex flex-jc-c flex-wrap">
+              <div class="locations__card">
+                <div class="locations__img">
+                  <img src="img/gdansk.jpg" alt="" />
+                  <h3>GDANSK</h3>
+                </div>
+                <h4 class="locations__address">
+                  Konopnickiej 5<br />
+                  80-445 GDANSK
+                </h4>
+                <p class="locations__contact">
+                  GDANSK@PANCAKESTACK.COM<br />
+                  504 785 334
+                </p>
+              </div>
+              <div class="locations__card">
+                <div class="locations__img">
+                  <img src="img/wwa.jpg" alt="" />
+                  <h3>WARSAW</h3>
+                </div>
+                <h4 class="locations__address">
+                  Batorego 22<br />
+                  02-591 Warsaw
+                </h4>
+                <p class="locations__contact">
+                  WARSAW@PANCAKESTACK.COM<br />
+                  504 795 338
+                </p>
+              </div>
+              <div class="locations__card">
+                <div class="locations__img">
+                  <img src="img/wroc.jpg" alt="" />
+                  <h3>WROCLOVE</h3>
+                </div>
+    
+                <h4 class="locations__address">
+                  Sienkiewicza 28<br />
+                  50-335 Wroclove
+                </h4>
+                <p class="locations__contact">
+                  WROCLOVE@PANCAKESTACK.COM<br />
+                  500 675 334
+                </p>
+              </div>
+            </div>
+            <div class="locations__open-hours">
+              <h3>OPENING HOURS</h3>
+              <table>
+                <tr>
+                  <th scope="row">MONDAY</th>
+                  <td>CLOSED</td>
+                </tr>
+                <tr>
+                  <th scope="row">TUESDAY - SUNDAY</th>
+                  <td>12:00 - 21:00</td>
+                </tr>
+              </table>
+              <p class="locations__open-now">
+                We are <span class="locations__open-closed"></span> now!
+              </p>
+            </div>
+          </section>
+          <section id="delivery" class="delivery">
+            <div class="delivery__content wrapper wrapper-pall">
+              <div class="delivery__text wrapper-text">
+                <h2 class="delivery__title">ORDER ONLINE</h2>
+                <p class="delivery__description">
+                  Now you can easily order your favorite pancakes online. Choose
+                  one of our delivery partners below. And remember, our delivery
+                  is FREE!
+                </p>
+              </div>
+              <div class="delivery__logos flex flex-jc-c flex-wrap">
+                <a href="#">
+                  <div style="background-image: url('img/talabat-logo.png')"></div>
+                </a>
+                <a href="#">
+                  <div style="background-image: url('img/zomato-logo.jpeg')"></div>
+                </a>
+                <a href="#">
+                  <div style="background-image: url('img/uber-eats_logo.png')"></div>
+                </a>
+              </div>
+            </div>
+          </section>
+        </main>
+        <footer class="footer wrapper wrapper-plr flex flex-jc-sb flex-ai-c">
+          <div class="footer__links">
+            <a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#contact">Contact</a>
+          </div>
+          <div class="footer__credits">
+            Developed by
+            <a href="https://github.com/msafran25" target="_blank"><i class="fab fa-github"></i> <a href="https://safran.ink" target="_blank" style="text-decoration: none; color: #1e245e;">Mohamed Safran</a></a>
+          </div>
+        </footer>
+      </div>
+      <script src="js/main.js"></script>
+</body>
+</html>

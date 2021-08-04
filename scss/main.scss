@@ -1,0 +1,845 @@
+//Colors
+$navy: #1e245e;
+$blueTransparent: #b1b7fa83;
+$navyTransparent: #1e245eab;
+$lightPink: #ffd7d7;
+$lightPinkTransparent: #ffdadab8;
+$darkPink: #ffb6b6;
+$tomato: #ff5d5d;
+$darkTomato: #d64343;
+$sand: #d7bc98;
+$sandTransparent: #e6ba81b4;
+$lightGray: #f1f1f1;
+$white: #ffffff;
+
+//Shadows
+$boxShadowLight: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+//Fonts
+$primaryFont: "Josefin Sans", sans-serif;
+$secondaryFont: "Open Sans", sans-serif;
+
+//Mixins
+//640px, 1024px, 1400px
+$breakpoints-up: (
+  "medium": "40rem",
+  "large": "64rem",
+  "xlarge": "87.5rem"
+);
+//639px, 1023px, 1399px
+$breakpoints-down: (
+  "small": "39.9375rem",
+  "medium": "63.9375rem",
+  "large": "87.4375rem"
+);
+
+@mixin breakpoint-up($size) {
+  @media (min-width: map-get($breakpoints-up, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media (max-width: map-get($breakpoints-down, $size)) {
+    @content;
+  }
+}
+
+// Blurry background
+@mixin blurry-bg {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: radial-gradient(
+      circle at 20% 80%,
+      $blueTransparent 11%,
+      transparent 11%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      $lightPinkTransparent 10%,
+      transparent 10%
+    ),
+    radial-gradient(circle at 70% 70%, $sandTransparent 10%, transparent 10%);
+  filter: blur(3.5rem);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+//Animations
+.has-fade {
+  visibility: hidden;
+}
+
+@keyframes fade-in {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: fade-in 300ms ease-in-out forwards;
+}
+
+@keyframes fade-out {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: fade-out 300ms ease-in-out forwards;
+}
+
+@keyframes scroll {
+  20%,
+  100% {
+    opacity: 0;
+    top: 50%;
+  }
+}
+
+//Globals
+html {
+  height: 100%;
+  font-size: 100%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: $secondaryFont;
+  line-height: 1.6;
+
+  &.noscroll {
+    overflow: hidden;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $primaryFont;
+}
+
+h2 {
+  font-size: 2.25rem;
+  color: $tomato;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: $navy;
+}
+
+h4 {
+  margin: 0;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+  color: $navy;
+}
+
+.container {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.wrapper {
+  max-width: 85rem;
+  margin: 0 auto;
+
+  &-pall {
+    padding: 4.5rem;
+
+    @include breakpoint-down(medium) {
+      padding: 3rem;
+    }
+  }
+
+  &-plr {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  &-ptb {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+
+    @include breakpoint-down(medium) {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+  &-text {
+    max-width: 32rem;
+    margin: 0 auto;
+  }
+}
+
+//Flexbox
+
+.flex {
+  display: flex;
+
+  &-jc-c {
+    justify-content: center;
+  }
+
+  &-jc-sb {
+    justify-content: space-between;
+  }
+
+  &-ai-c {
+    align-items: center;
+  }
+  &-wrap {
+    flex-wrap: wrap;
+  }
+}
+
+button,
+.button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+//Visibility
+
+.hide-for-mobile {
+  @include breakpoint-down(medium) {
+    display: none;
+  }
+}
+
+.hide-for-desktop {
+  @include breakpoint-up(large) {
+    display: none;
+  }
+}
+
+//Header
+.header {
+  position: fixed;
+  z-index: 1;
+  background-color: $white;
+  box-shadow: $boxShadowLight;
+  width: 100%;
+
+  .overlay {
+    opacity: 0;
+    position: fixed;
+    top: 4.8125rem;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    background-image: linear-gradient($sand, transparent);
+  }
+
+  &.open {
+    .header__btnHamburger {
+      > span:first-child {
+        transform: rotate(45deg);
+      }
+      > span:nth-child(2) {
+        opacity: 0;
+      }
+
+      > span:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  nav {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  &__logo {
+    img {
+      display: block;
+      width: 4.5rem;
+      height: auto;
+    }
+  }
+
+  &__btnHamburger {
+    background-color: $white;
+    > span {
+      display: block;
+      width: 1.625rem;
+      height: 0.1875rem;
+      background-color: $navy;
+      transition: all 300ms ease-in-out;
+      transform-origin: 4px 2px;
+
+      &:not(:last-child) {
+        margin-bottom: 0.1875rem;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__links {
+    a {
+      display: inline-block;
+      position: relative;
+      transition: color 250ms ease-in-out;
+
+      &:not(:last-child) {
+        margin-right: 1.5rem;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        height: 4px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -15px;
+        transition: background-color 250ms ease-in-out;
+      }
+
+      &:hover {
+        color: $tomato;
+
+        &::before {
+          background-color: $tomato;
+        }
+      }
+    }
+  }
+
+  &__sm {
+    a {
+      display: inline-block;
+      color: $white;
+      background-color: $navy;
+      border-radius: 50%;
+      width: 1.7rem;
+      height: 1.7rem;
+      position: relative;
+      font-size: 0.875rem;
+      transition: all 350ms ease-in-out;
+
+      &:hover {
+        background-color: $tomato;
+      }
+
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+
+      i {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    width: calc(100% - 5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $white;
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 5px;
+
+    a {
+      display: block;
+      padding: 1rem;
+      color: $navy;
+      text-align: center;
+
+      &:hover,
+      &:focus {
+        color: $tomato;
+      }
+    }
+
+    div {
+      width: 100%;
+      padding: 1rem;
+      text-align: center;
+      > a {
+        display: inline;
+        padding: 0 1.3rem;
+      }
+    }
+  }
+}
+
+//Hero
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100vh;
+  min-height: 50rem;
+
+  .slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    &__item {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: all 300ms ease-in-out;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    > button {
+      position: absolute;
+      top: 50%;
+      font-size: 2rem;
+      outline: none;
+      color: $white;
+
+      &:disabled {
+        opacity: 0.4;
+      }
+
+      @include breakpoint-down(small) {
+        top: 70%;
+      }
+    }
+    &__nextBtn {
+      right: 2rem;
+    }
+    &__prevBtn {
+      left: 2rem;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: clamp(2.25rem, 8vw, 10rem);
+    font-weight: 900;
+    letter-spacing: 1.3rem;
+    line-height: 1.2;
+    color: white;
+    text-align: center;
+  }
+
+  &__btn {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 20%;
+    padding: 1rem 1.3rem;
+    background-color: $tomato;
+    color: white;
+    border: none;
+    border-radius: 1.5rem;
+    transition: background-color 350ms ease-in-out;
+
+    &:hover {
+      background-color: $darkTomato;
+    }
+  }
+
+  &__scroll-icon {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%);
+    > a {
+      display: block;
+
+      > :nth-child(1) {
+        position: relative;
+        width: 25px;
+        height: 40px;
+        border-radius: 15px;
+        border: 2px solid white;
+      }
+      > :nth-child(2) {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translate(-50%);
+        width: 7px;
+        height: 7px;
+        background-color: white;
+        border-radius: 50%;
+        animation: scroll 3s ease-in infinite;
+      }
+    }
+  }
+}
+
+//About
+.about {
+  &__content {
+    flex-direction: column;
+    position: relative;
+    max-width: 68.375rem;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: url(https://raw.githubusercontent.com/hzndr/pancake-house-website/main/img/logo_bg.png)
+        no-repeat;
+      opacity: 0.5;
+      top: 186px;
+
+      @include breakpoint-down(medium) {
+        left: 50%;
+        top: 82%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__text {
+    text-align: justify;
+  }
+}
+
+//Menu
+.menu {
+  position: relative;
+
+  &::before {
+    @include blurry-bg;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__content {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+}
+
+.card {
+  flex: 1 1 18.75rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: $boxShadowLight;
+  background-color: $white;
+  margin: 0.5rem;
+  transition: transform 150ms ease-in-out;
+
+  &:hover {
+    & > img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 8rem;
+    object-fit: cover;
+    object-position: 100% 35%;
+    transition: all 500ms ease-in-out;
+  }
+
+  &__category {
+    text-align: center;
+    position: relative;
+    background-color: $white;
+    margin: -1rem 0 0 0;
+    border-radius: 1rem;
+    padding-top: 1.5rem;
+  }
+
+  &__list {
+    position: relative;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    background-color: white;
+  }
+
+  &__item {
+    margin-bottom: 2rem;
+  }
+
+  &__header {
+    border-bottom: 1px solid $sand;
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.3rem;
+    width: 100%;
+
+    &::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    h4 {
+      float: left;
+      max-width: 90%;
+      text-transform: uppercase;
+    }
+
+    span {
+      float: right;
+      font-family: $secondaryFont;
+    }
+  }
+}
+
+// Locations
+.locations {
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+
+  &__content {
+    margin-bottom: 2rem;
+  }
+
+  &__card {
+    flex: 0 1 350px;
+    margin: 2rem;
+    line-height: 1.5;
+    box-shadow: 2px 2px 2px (0, 0, 0, 0.7);
+
+    h3 {
+      margin-top: 0;
+    }
+
+    h4 {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__img {
+    position: relative;
+    height: 14rem;
+    width: 21.875rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: all 350ms ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+
+      > h3 {
+        font-size: 1.6875rem;
+      }
+    }
+
+    > img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: auto;
+      width: 350px;
+    }
+
+    > h3 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 0;
+      margin-bottom: 0;
+      background-image: linear-gradient(to top, $navyTransparent, transparent);
+      color: $white;
+      transition: all 350ms ease-in-out;
+    }
+  }
+
+  &__open-hours {
+    font-family: $secondaryFont;
+    > h4 {
+      margin-bottom: 1.5rem;
+    }
+    table {
+      margin: 0 auto;
+      font-family: $secondaryFont;
+      margin-bottom: 2rem;
+
+      th {
+        text-align: right;
+      }
+
+      td {
+        text-align: left;
+        word-wrap: break-word;
+      }
+
+      td,
+      th {
+        padding: 0.3rem 1rem;
+        @include breakpoint-down(small) {
+          text-align: center;
+        }
+      }
+    }
+  }
+  &__open-now {
+    width: 17rem;
+    margin: auto;
+    padding: 0.7rem 0.5rem 0.5rem;
+    transform: rotate(-4deg);
+    font-family: $primaryFont;
+    font-size: 1.3rem;
+    color: $navy;
+    border: 1px solid $sand;
+    border-radius: 0.7rem;
+    vertical-align: middle;
+
+    > span {
+      font-weight: 700;
+      color: $tomato;
+    }
+  }
+}
+
+//Delivery
+.delivery {
+  text-align: center;
+  position: relative;
+
+  &::before {
+    @include blurry-bg;
+  }
+
+  &__text {
+    margin-bottom: 3rem;
+  }
+
+  &__logos {
+    > a {
+      display: block;
+      height: 4rem;
+      width: 8rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      margin: 1rem;
+      box-shadow: $boxShadowLight;
+      transition: transform 300ms ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      div {
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+      }
+    }
+  }
+}
+
+//Footer
+.footer {
+  width: 100%;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-size: 0.875rem;
+
+  @include breakpoint-down(medium) {
+    flex-direction: column;
+  }
+
+  &__links {
+    flex-shrink: 1;
+    text-align: center;
+    > a {
+      padding: 0.5rem;
+      transition: all 200ms ease-in-out;
+
+      &:hover {
+        color: $tomato;
+      }
+
+      @include breakpoint-down(medium) {
+        display: block;
+      }
+    }
+  }
+
+  &__credits {
+    padding: 0.5rem 0;
+    a {
+      font-weight: 800;
+      transition: all 200ms ease-in-out;
+
+      &:hover {
+        color: $tomato;
+      }
+    }
+  }
+}
